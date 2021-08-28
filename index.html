@@ -11,6 +11,7 @@
   <script src="js/colors.js"></script>
   <script src="js/app.js"></script>
   <body>
+    <h1>Tap the mic and say a color</h1>
     <span id="mic" onclick="toggle()" class="fa-stack fa-5x">
       <i class="far fa-circle fa-stack-2x"></i>
       <i class="fas fa-microphone fa-stack-1x"></i>
@@ -19,12 +20,19 @@
   </body>
 </html>
 <style>
+  :root {
+    --font-color: black;
+  }
   body {
-    width: 100vw !important;
     height: 75vh !important;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
+    color: var(--font-color);
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+    text-transform: uppercase;
   }
   #mic {
     cursor: pointer;

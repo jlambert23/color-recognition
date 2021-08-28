@@ -19,7 +19,8 @@ function handleResult(result) {
     html.style.backgroundColor = transcript;
 
     const rgb = window.getComputedStyle(html).backgroundColor.match(/\d+/g);
-    mic.style.color = getContrastColor(...rgb);
+    const color = getContrastColor(...rgb);
+    document.documentElement.style.setProperty('--font-color', color);
   }
 }
 
