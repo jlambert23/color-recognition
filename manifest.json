@@ -1,7 +1,7 @@
 {
   "name": "Color Recognition",
   "short_name": "Color",
-  "start_url": "/",
+  "start_url": "/color-recognition",
   "icons": [
     {
       "src": "icons/manifest-icon-192.png",
