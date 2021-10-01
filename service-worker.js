@@ -3,6 +3,6 @@ importScripts(
 );
 
 workbox.routing.registerRoute(
-  ({ request }) => request.destination === 'image',
+  ({ request }) => ['image', 'font'].includes(request.destination),
   new workbox.strategies.CacheFirst()
 );
