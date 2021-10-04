@@ -1,14 +1,18 @@
 // https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API/Using_the_Web_Speech_API
 var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
 
-let html = document.querySelector('html');
-let muted;
+const html = document.querySelector('html');
+const mute = document.getElementById('mute');
 
 const recognition = new SpeechRecognition();
 recognition.continuous = true;
+recognition.onstart = () => console.log('start');
 recognition.onresult = ({ results }) =>
   handleResult(results[results.length - 1][0]);
-recognition.onend = () => muted && toggle();
+recognition.onend = () => {
+  console.log('end');
+  mute.classList.remove('hidden');
+};
 recognition.onerror = console.error;
 
 function handleResult(result) {
@@ -25,16 +29,12 @@ function handleResult(result) {
 }
 
 function toggle() {
-  const mute = document.getElementById('mute');
-  muted = !mute.classList.contains('hidden');
-
-  if (muted) {
+  const muted = !mute.classList.toggle('hidden');
+  if (!muted) {
     recognition.start();
   } else {
     recognition.stop();
   }
-
-  mute.classList.toggle('hidden');
 }
 
 function getContrastColor(r, g, b) {
