@@ -19,8 +19,12 @@ function handleResult(result) {
   const transcript = result.transcript.trim().toLowerCase();
   console.log(transcript, result.confidence);
 
-  if (colors.includes(transcript)) {
-    html.style.backgroundColor = transcript;
+  const foundColor = transcript
+    .split(' ')
+    .find((word) => colors.includes(word));
+
+  if (foundColor) {
+    html.style.backgroundColor = foundColor;
 
     const rgb = window.getComputedStyle(html).backgroundColor.match(/\d+/g);
     const color = getContrastColor(...rgb);
